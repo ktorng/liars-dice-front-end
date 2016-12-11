@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm install",
+    "postinstall": "bower install",
+    "start": "node index.js"
   },
   "author": "Jonathan Spies <jonathan.spies@gmail.com>",
   "repository": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "~1.13.2",
+    "bower": "^1.8.0",
     "expect": "^1.9.0",
     "express": "^4.13.3",
     "mustache": "latest",
