@@ -1,0 +1,36 @@
+<!-- top bar that shows title and instructions button -->
+<md-toolbar class="md-tall md-hue-2">
+  <span flex></span> <!-- fill up top area -->
+  <div class="md-toolbar-tools">
+    <h1>Liar's Dice</h1>
+    <span flex></span> <!-- fill up area between heading and instructions button -->
+    <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-button aria-label="Instructions" class="md-raised md-secondary" ng-click="$ctrl.showInstructionsDialog()">
+        Instructions
+      </md-button>
+    </div>
+  </div>
+</md-toolbar>
+
+<!-- hidden instructions dialog -->
+<div style="visibility: hidden">
+  <div class="md-dialog-container" id="instructionsDialog">
+    <md-dialog layout-padding class="instructions">
+      <h1>How To Play</h1>
+
+      <h3>Start a game</h3>
+      <p>Enter number of players and click start game</p>
+
+      <h3>Make a move</h3>
+      <p>Make a claim or challenge the last claim</p>
+
+      <h3>Claim</h3>
+      <p>Make a bid on total number of X dice with Y face between all players</p>
+      <p>The number of dice claimed must be greater than the previous claim</p>
+      <p>Choose any number of dice to put onto the board and reroll the remaining</p>
+
+      <h3>Challenge</h3>
+      <p>If you don't believe the previous claim is true, you may challenge and the dice will be counted</p>
+    </md-dialog>
+  </div>
+</div>
