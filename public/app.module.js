@@ -6,5 +6,6 @@ angular
     'ngRoute',
     'ngMaterial',
     'ngMdIcons',
+    'ngMessages',
     'menu'
   ]);

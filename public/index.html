@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="app.css">
 </head>
 <body layout="column">
+  <md-toolbar class="md-tall md-hue-2">
+    <span flex></span> <!-- fill up top area -->
+    <div class="md-toolbar-tools">Liar's Dice</div>
+  </md-toolbar>
   <div ng-view flex layout="column"></div>
 
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -20,6 +24,7 @@
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-material/angular-material.js"></script>
   <script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.module.js"></script>
   <script src="app.config.js"></script>

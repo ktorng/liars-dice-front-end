@@ -1,3 +1,53 @@
-<div flex layout="row">
-  Menu content here
+<div flex layout="column" layout-align="center center">
+  <div layout="row" layout-align="center center">
+    <form name="menuForm">
+      <md-input-container>
+        <label>Number of Players (2 to 12)</label>
+        <input
+          required
+          type="number"
+          step="any"
+          name="numPlayers"
+          ng-model="$ctrl.numPlayers"
+          min="2"
+          max="12"
+        />
+        <div ng-messages="menuForm.numPlayers.$error">
+          <div ng-message-exp="['required', 'min', 'max']">
+            Please enter a valid number of players in order to start the game.
+          </div>
+        </div>
+      </md-input-container>
+    </form>
+  </div>
+  <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+    <md-button aria-label="New Game" class="md-raised md-secondary">
+      Start Game
+    </md-button>
+    <md-button aria-label="Instructions" class="md-raised md-secondary" ng-click="$ctrl.showInstructionsDialog()">
+      Instructions
+    </md-button>
+  </div>
+
+  <div style="visibility: hidden">
+    <div class="md-dialog-container" id="instructionsDialog">
+      <md-dialog layout-padding class="instructions">
+        <h1>How To Play</h1>
+
+        <h3>Start a game</h3>
+        <p>Enter number of players and click start game</p>
+
+        <h3>Make a move</h3>
+        <p>Make a claim or challenge the last claim</p>
+
+        <h3>Claim</h3>
+        <p>Make a bid on total number of X dice with Y face between all players</p>
+        <p>The number of dice claimed must be greater than the previous claim</p>
+        <p>Choose any number of dice to put onto the board and reroll the remaining</p>
+
+        <h3>Challenge</h3>
+        <p>If you don't believe the previous claim is true, you may challenge and the dice will be counted</p>
+      </md-dialog>
+    </div>
+  </div>
 </div>
