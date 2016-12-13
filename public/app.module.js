@@ -8,6 +8,7 @@ angular
     'ngMdIcons',
     'ngMessages',
     'core',
+    'toolbar',
     'menu',
-    'toolbar'
+    'game'
   ]);
