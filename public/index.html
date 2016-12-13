@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="liarsDice">
 <head>
   <meta charset="utf-8">
   <title>Bypass Mobile: Liar's Dice</title>
@@ -9,24 +9,21 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css">
+  <link rel="stylesheet" href="app.css">
 </head>
-<body ng-app="myApp">
-  <div ng-controller="GameController">
-    <!-- Current Game UI -->
-    <h4>Game ID: {{games[0]._id}}</h4>
+<body layout="column">
+  <div ng-view flex layout="column"></div>
 
-    <h4>Player hands:</h4>
-    <div ng-repeat="hand in games[0].playerHands track by $index">
-      Player {{$index}} hand: {{ hand }}
-    </div>
-
-    <h4>Actions:</h4>
-    <div ng-repeat="action in games[0].actions track by $index">
-      Player {{ action.player }} claimed there are {{ action.claimNumber }} {{ action.claimFace }}'s
-    </div>
-  </div>
-
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-  <script src="app.js"></script>
-  </body>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.module.js"></script>
+  <script src="app.config.js"></script>
+  <script src="menu/menu.module.js"></script>
+  <script src="menu/menu.component.js"></script>
+</body>
 </html>
