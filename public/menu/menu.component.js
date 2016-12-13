@@ -7,9 +7,15 @@ angular
     templateUrl: 'menu/menu.template.html',
     controller: ['Game',
       function menuController(Game) {
+        // default to 5 dice
+        this.numDice = 5;
+        
+        // use the Game resource to post a new game
         this.createGame = () => {
-          console.log(this.numPlayers)
-        }
+          Game.save({ numPlayers: this.numPlayers, numDice: this.numDice }, (data) => {
+            console.log(data);
+          })
+        };
       }
     ]
   });

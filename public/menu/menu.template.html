@@ -1,21 +1,40 @@
 <div flex layout="column" layout-align="center center">
   <div layout="row" layout-align="center center">
     <form name="menuForm">
+      <h4>Game Settings</h4>
       <md-input-container style="min-width:360px;">
         <label>Number of Players (2 to 12)</label>
         <input
           required
           type="number"
-          step="any"
           name="numPlayers"
           ng-model="$ctrl.numPlayers"
           min="2"
           max="12"
+          step="1"
           ng-pattern="/^[0-9]+$/"
         />
         <div ng-messages="menuForm.numPlayers.$error">
           <div ng-message-exp="['required', 'min', 'max', 'pattern']">
-            Please enter a valid number of players in order to start the game.
+            Please enter a valid number of players.
+          </div>
+        </div>
+      </md-input-container>
+      <md-input-container style="min-width:360px;">
+        <label>Number of Dice (2 to 8)</label>
+        <input
+          required
+          type="number"
+          name="numDice"
+          ng-model="$ctrl.numDice"
+          min="2"
+          max="8"
+          step="1"
+          ng-pattern="/^[2-8]$/"
+        />
+        <div ng-messages="menuForm.numDice.$error">
+          <div ng-message-exp="['required', 'min', 'max', 'pattern']">
+            Please enter a valid number of dice.
           </div>
         </div>
       </md-input-container>
@@ -25,7 +44,7 @@
     <md-button
       aria-label="New Game"
       class="md-raised md-secondary"
-      ng-disabled="!$ctrl.numPlayers"
+      ng-disabled="!$ctrl.numPlayers || !$ctrl.numDice"
       ng-click="$ctrl.createGame()"
     >
       Start Game
