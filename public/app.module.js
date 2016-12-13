@@ -7,6 +7,7 @@ angular
     'ngMaterial',
     'ngMdIcons',
     'ngMessages',
+    'core',
     'menu',
     'toolbar'
   ]);

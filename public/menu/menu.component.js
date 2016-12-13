@@ -5,6 +5,11 @@ angular
   .module('menu')
   .component('menu', {
     templateUrl: 'menu/menu.template.html',
-    controller: function menuController() {
-    }
+    controller: ['Game',
+      function menuController(Game) {
+        this.createGame = () => {
+          console.log(this.numPlayers)
+        }
+      }
+    ]
   });

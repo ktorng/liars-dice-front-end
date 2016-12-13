@@ -1,7 +1,7 @@
 <div flex layout="column" layout-align="center center">
   <div layout="row" layout-align="center center">
     <form name="menuForm">
-      <md-input-container>
+      <md-input-container style="min-width:360px;">
         <label>Number of Players (2 to 12)</label>
         <input
           required
@@ -11,9 +11,10 @@
           ng-model="$ctrl.numPlayers"
           min="2"
           max="12"
+          ng-pattern="/^[0-9]+$/"
         />
         <div ng-messages="menuForm.numPlayers.$error">
-          <div ng-message-exp="['required', 'min', 'max']">
+          <div ng-message-exp="['required', 'min', 'max', 'pattern']">
             Please enter a valid number of players in order to start the game.
           </div>
         </div>
@@ -21,7 +22,12 @@
     </form>
   </div>
   <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-    <md-button aria-label="New Game" class="md-raised md-secondary">
+    <md-button
+      aria-label="New Game"
+      class="md-raised md-secondary"
+      ng-disabled="!$ctrl.numPlayers"
+      ng-click="$ctrl.createGame()"
+    >
       Start Game
     </md-button>
   </div>
