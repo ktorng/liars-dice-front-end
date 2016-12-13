@@ -1,3 +1,10 @@
-<div>
-  Game view for game id: {{$ctrl.gameId}}
-</div>
+<md-sidenav
+  layout="column"
+  class="md-sidenav-left md-whiteframe-z2"
+  md-component-id="left"
+  md-is-locked-open="$mdMedia('gt-md')"
+>
+  <ng-include flex layout="column" src="'game/partials/sidebar.partial.html'"></ng-include>
+</md-sidenav>
+<md-content layout="row" flex layout-padding>
+</md-content>

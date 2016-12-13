@@ -22,7 +22,7 @@ angular
           template: '<menu flex layout="column"></menu>'
         })
         .when('/game', {
-          template: '<game flex layout="column"></game>',
+          template: '<game flex layout="row"></game>',
           // only load game module if an id exists in local storage
           resolve: {
             check: function($location) {
