@@ -1,6 +1,23 @@
 ## Liars Dice Web App
 #### A simple imperfect node backend + Angular skeleton for UI engineer interviews
 
+### Submission
+This front end project was completed using angular-route, angular-material, and angular-resource. I separated the app into several components:
+
+* Toolbar - a topbar with the site title and a button to read game instructions
+* Menu - allows the user to select number of players and number of dice, and start game after input validation
+* Game
+  * Sidebar - a sidebar that shows number of dice hidden for all players, and an action log
+  * Content - shows the current dice on the board, previous claim, and the current player's hand and available actions
+
+The game ends upon challenge, and reveals the hidden dice for all players.
+
+To get started, simply run:
+```
+npm start
+```
+and the npm and bower packages will be installed and the server will start.
+
 ###Liar's Dice
 
 In the game Liar's Dice, each player begins the game with 5 dice, hidden from the other players.  Every player rolls the dice and hides the result. The first player puts X(ex. 0 to 5) number of dice in the middle and declares how many dice of a certain number exist amongst all the dice in play. For example, if he puts out 3 4s and says "There are at least 10 4s", then he believes there are 10 4's across everyone's hand including the 3 dice in the middle.

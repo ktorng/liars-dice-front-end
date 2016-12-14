@@ -19,8 +19,10 @@ angular
             console.log(data);
             this.game = data;
             this.currentHand = [];
-            // if game is in progress
+            // if game has started
             if (data.actions.length > 0) {
+              // if game has ended
+              if (data.actions[0].actionType === "end") this.endGame = true;
               // update current player based on length of actions taken
               this.currentPlayer = data.actions.length % data.numPlayers;
               // update prev claim

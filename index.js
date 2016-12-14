@@ -64,7 +64,7 @@ app.post('/games/challenge', function(req, res) {
       challengeNumber: req.body.challengeNumber,
       challengeFace: req.body.challengeFace
     }, function(result) {
-      res.json({ result });
+      res.json({ result: result[0] });
     });
   });
 });

@@ -18,7 +18,7 @@
     <div>
       Player {{$index + 1}}:
       <span ng-repeat="die in hand track by $index">
-        <md-icon md-svg-icon="dice-{{die}}"></md-icon>
+        <md-icon md-svg-icon="dice-{{die}}" ng-class="{ 'match': die === $ctrl.prevClaim.face }"></md-icon>
       </span>
     </div>
   </div>
@@ -34,7 +34,7 @@
     Player {{ action.player + 1 }} challenges the claim that there are {{ action.challengeNumber }} {{ action.challengeFace }}'s!
   </span>
   <span ng-if="action.actionType === 'end'">
-    Player {{ action.player }}'s claim was {{ action.result }}!
+    Player {{ action.player }}'s claim was {{ action.result }}! There were {{ action.resultNum }} {{ action.resultFace }}'s!
   </span>
 </div>
 <md-divider></md-divider>

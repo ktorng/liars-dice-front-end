@@ -9,7 +9,12 @@
     <md-subheader>Board</md-subheader>
     <div class="board" layout="row" layout-wrap>
       <div ng-repeat="die in $ctrl.game.board track by $index">
-        <md-icon md-svg-icon="dice-{{die}}"></md-icon>
+        <md-icon ng-if="!$ctrl.endGame" md-svg-icon="dice-{{die}}"></md-icon>
+        <md-icon
+          ng-if="$ctrl.endGame"
+          md-svg-icon="dice-{{die}}"
+          ng-class="{ 'match': die === $ctrl.prevClaim.face }"
+        ></md-icon>
       </div>
     </div>
     <!-- Previous claim if it exists -->

@@ -36,7 +36,13 @@ Action.add = function(game, action, cb) {
     }
   } else if (action.actionType == "challenge") {
     var result = this.challenge(game, action.challengeNumber, action.challengeFace);
-    game.document.actions.unshift({ actionType: 'end', player: action.player, result: result });
+    game.document.actions.unshift({
+      actionType: 'end',
+      player: action.player,
+      result: result[0],
+      resultNum: result[1],
+      resultFace: action.challengeFace
+    });
     game.save(function() {
       cb(result);
     });
@@ -53,7 +59,7 @@ Action.challenge = function(game, num, face) {
 
   var total = inPlayerHands + this.numberInHand(game.document.board, face);
 
-  return total >= num;
+  return [total >= num, total];
 };
 
 Action.numberInHand = function(hand, face) {
