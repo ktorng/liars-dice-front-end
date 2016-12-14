@@ -1,0 +1,14 @@
+<section md-whiteframe="10">
+<md-toolbar class="md-accent">
+  <div class="md-toolbar-tools">
+    Current player: {{$ctrl.currentPlayer + 1}}
+  </div>
+</md-toolbar>
+<md-content>
+  <div class="current-hand" layout="row">
+    <div flex="100 / $ctrl.currentHand.length" ng-repeat="die in $ctrl.currentHand track by $index">
+      <md-icon md-svg-icon="dice-{{die}}"></md-icon>
+    </div>
+  </div>
+</md-content>
+</section>

@@ -5,10 +5,14 @@ angular
   .module('liarsDice')
   .config([
     '$mdThemingProvider',
-    function($mdThemingProvider) {
+    '$mdIconProvider',
+    function($mdThemingProvider, $mdIconProvider) {
       $mdThemingProvider
         .theme('default')
         .primaryPalette('teal');
+
+      $mdIconProvider
+        .defaultIconSet('images/mdi.svg');
     }
   ])
   .config([

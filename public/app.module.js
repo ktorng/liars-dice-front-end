@@ -5,7 +5,6 @@ angular
   .module('liarsDice', [
     'ngRoute',
     'ngMaterial',
-    'ngMdIcons',
     'ngMessages',
     'core',
     'toolbar',

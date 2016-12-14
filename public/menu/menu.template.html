@@ -1,7 +1,7 @@
 <div flex layout="column" layout-align="center center">
   <div layout="row" layout-align="center center">
     <form name="menuForm">
-      <h4>Game Settings</h4>
+      <h4>Create New Game</h4>
       <md-input-container style="min-width:360px;">
         <label>Number of Players (2 to 12)</label>
         <input
@@ -43,11 +43,11 @@
   <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
     <md-button
       aria-label="New Game"
-      class="md-raised md-secondary"
+      class="md-raised md-primary"
       ng-disabled="!$ctrl.numPlayers || !$ctrl.numDice"
       ng-click="$ctrl.createGame()"
     >
-      Start Game
+      Start
     </md-button>
   </div>
 

@@ -19,3 +19,8 @@ md-input-container {
 .instructions p {
   text-indent: 20px;
 }
+
+.current-hand md-icon {
+  width: 100%;
+  height: 100%;
+}

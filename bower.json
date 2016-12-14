@@ -8,7 +8,6 @@
   "homepage": "https://github.com/ktorng/liars-dice-front-end",
   "private": true,
   "dependencies": {
-    "angular-material-icons": "^0.7.1",
     "angular-material": "^1.1.1",
     "angular-route": "^1.6.0",
     "angular": "^1.6.0",
