@@ -1,3 +1,4 @@
+<!-- sidebar showing player hands and action log -->
 <md-sidenav
   class="md-sidenav-left md-whiteframe-z2"
   md-component-id="left"
@@ -5,6 +6,11 @@
 >
   <ng-include flex layout="column" src="'game/partials/sidebar.partial.html'"></ng-include>
 </md-sidenav>
+<!-- button to open sidebar when window is small -->
+<md-button class="md-icon-button" aria-label="Toggle Sidebar" ng-click="$ctrl.toggleLeft()" hide-gt-md>
+  <md-icon md-svg-icon="view-headline"></md-icon>
+</md-button>
+<!-- game content for current player -->
 <md-content flex layout-padding layout="row" layout-align="center center">
   <ng-include flex="80" src="'game/partials/content.partial.html'"></ng-include>
 </md-content>

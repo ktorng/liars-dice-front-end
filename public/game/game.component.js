@@ -4,8 +4,8 @@ angular
   .module('game')
   .component('game', {
     templateUrl: 'game/game.template.html',
-    controller: ['Game', 'Claim', 'Challenge', '$location', '$mdToast',
-      function gameController(Game, Claim, Challenge, $location, $mdToast) {
+    controller: ['Game', 'Claim', 'Challenge', '$location', '$mdToast', '$mdSidenav',
+      function gameController(Game, Claim, Challenge, $location, $mdToast, $mdSidenav) {
         this.gameId = localStorage.getItem('gameId');
         // default current turn to first player
         this.currentPlayer = 0;
@@ -121,6 +121,12 @@ angular
             // end the game and reveal hidden hands
             this.endGame = true;
           });
+        };
+
+        // toggle left sidenav
+        this.toggleLeft = () => {
+          console.log('toggle side nav')
+          $mdSidenav('left').toggle();
         };
 
         // get game info on component mount
