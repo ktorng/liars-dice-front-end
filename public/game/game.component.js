@@ -12,6 +12,7 @@ angular
         this.currentHand = [];
         this.moveNum = 0;
         this.endGame = false;
+        this.boardCounts = new Array(6).fill(0);
 
         this.updateGame = () => {
           Game.get({ id: this.gameId }, (data) => {
@@ -41,6 +42,7 @@ angular
 
         // toggles selected dice for move to board
         this.toggleSelect = (i) => {
+          console.log(this.boardCounts)
           const prevFace = this.moveFace;
           this.moveFace = this.currentHand[i].face;
 
@@ -59,8 +61,8 @@ angular
             this.currentHand[i].selected = true;
             this.moveNum++;
 
-            // set claimNum and claimFace to selected for ease of play
-            this.claimNum = this.moveNum;
+            // set claimNum and claimFace to boardCounts for ease of play
+            this.claimNum = this.moveNum + this.boardCounts[this.moveFace - 1];
             this.claimFace = this.moveFace;
           }
         };
@@ -89,6 +91,8 @@ angular
                 num: this.claimNum,
                 face: this.claimFace
               };
+              // update board counts
+              this.boardCounts[this.moveFace-1] += this.moveNum;
               // reset moves and claims
               this.moveNum = null;
               this.moveFace = null;
