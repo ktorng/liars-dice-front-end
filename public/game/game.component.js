@@ -16,7 +16,6 @@ angular
 
         this.updateGame = () => {
           Game.get({ id: this.gameId }, (data) => {
-            console.log(data);
             this.game = data;
             this.currentHand = [];
             // if game has started
@@ -44,7 +43,6 @@ angular
 
         // toggles selected dice for move to board
         this.toggleSelect = (i) => {
-          console.log(this.boardCounts)
           const prevFace = this.moveFace;
           this.moveFace = this.currentHand[i].face;
 
@@ -127,7 +125,6 @@ angular
 
         // toggle left sidenav
         this.toggleLeft = () => {
-          console.log('toggle side nav')
           $mdSidenav('left').toggle();
         };
 
