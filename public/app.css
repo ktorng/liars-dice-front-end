@@ -29,9 +29,23 @@ html, body {
   text-indent: 20px;
 }
 
+.game .md-subheader {
+  padding: 0;
+  line-height: 14px;
+}
+
+.board, .current-hand {
+  margin-left: 15px;
+}
+
+.board md-icon {
+  width: 60px;
+  height: 60px;
+}
+
 .current-hand md-icon {
-  width: 100%;
-  height: 100%;
+  width: 60px;
+  height: 60px;
 }
 
 .current-hand md-icon:hover {
