@@ -66,34 +66,46 @@ angular
 
         // make a claim
         this.postClaim = () => {
-          Claim.save({
-            id: this.gameId,
-            claimNumber: this.claimNum,
-            claimFace: this.claimFace,
-            player: this.currentPlayer,
-            moveNumber: this.moveNum,
-            moveFace: this.moveNum ? this.moveFace : null
-          }, (res) => {
-            this.prevClaim = {
-              num: this.claimNum,
-              face: this.claimFace
-            };
-            this.claimNum = null;
-            this.claimFace = null;
-            this.updateGame();
-          });
+          // if invalid claim
+          if (this.prevClaim && (this.claimNum < this.prevClaim.num ||
+            (this.claimNum === this.prevClaim.num && this.claimFace <= this.prevClaim.face))) {
+            $mdToast.show(
+              $mdToast.simple()
+                .textContent(`Please enter a higher claim - see instructions for claim rules`)
+                .position('bottom center')
+            );
+          } else {
+            Claim.save({
+              id: this.gameId,
+              claimNumber: this.claimNum,
+              claimFace: this.claimFace,
+              player: this.currentPlayer,
+              moveNumber: this.moveNum,
+              moveFace: this.moveNum ? this.moveFace : null
+            }, (res) => {
+              // update prev claim
+              this.prevClaim = {
+                num: this.claimNum,
+                face: this.claimFace
+              };
+              // reset moves and claims
+              this.moveNum = null;
+              this.moveFace = null;
+              this.claimNum = null;
+              this.claimFace = null;
+              this.updateGame();
+            });
+          }
         };
 
         // make a challenge
         this.postChallenge = () => {
-          console.log(this.currentPlayer)
           Challenge.save({
             id: this.gameId,
             player: this.currentPlayer,
             challengeNumber: this.prevClaim.num,
             challengeFace: this.prevClaim.face
           }, (res) => {
-            console.log(res)
             this.updateGame();
 
             $mdToast.show(
