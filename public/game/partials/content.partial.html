@@ -5,14 +5,21 @@
     </div>
   </md-toolbar>
   <md-content layout="column" layout-padding>
-    <md-subheader>Board</md-subheader>
     <!-- Dice on the board -->
+    <md-subheader>Board</md-subheader>
     <div class="board" layout="row" layout-wrap>
       <div ng-repeat="die in $ctrl.game.board track by $index">
         <md-icon md-svg-icon="dice-{{die}}"></md-icon>
       </div>
     </div>
+    <!-- Previous claim if it exists -->
     <md-subheader>Previous Claim</md-subheader>
+    <div ng-if="$ctrl.prevClaim" class="prev-claim">
+      {{$ctrl.prevClaim.num}} <md-icon md-svg-icon="dice-{{$ctrl.prevClaim.face}}"></md-icon>
+    </div>
+    <div ng-if="!$ctrl.prevClaim" class="prev-claim">
+      No claim yet
+    </div>
     <!-- Current player's hand -->
     <md-subheader>Your Hand</md-subheader>
     <div class="current-hand" layout="row" layout-wrap>
@@ -76,9 +83,11 @@
       >
         Claim
       </md-button>
+      <!-- Disable on turn 1 -->
       <md-button
         aria-label="Leave Game"
         class="md-raised md-secondary"
+        ng-disabled="$ctrl.game.actions.length === 0"
       >
         Challenge
       </md-button>

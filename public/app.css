@@ -34,16 +34,17 @@ html, body {
   line-height: 14px;
 }
 
-.board, .current-hand {
+.board, .current-hand, .prev-claim {
   margin-left: 15px;
 }
 
-.board md-icon {
-  width: 60px;
-  height: 60px;
+.prev-claim {
+  font-size: 24px;
 }
 
-.current-hand md-icon {
+.board md-icon,
+.current-hand md-icon,
+.prev-claim md-icon {
   width: 60px;
   height: 60px;
 }

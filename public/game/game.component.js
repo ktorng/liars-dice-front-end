@@ -17,12 +17,16 @@ angular
             console.log(data);
             this.game = data;
             this.currentHand = [];
-            // if game is in progress, update current player based on length of actions taken
+            // if game is in progress
             if (data.actions.length > 0) {
+              // update current player based on length of actions taken
               this.currentPlayer = data.actions.length % data.numPlayers;
+              // update prev claim
+              const prevClaim = data.actions.find(action => action.actionType === "claim");
+              this.prevClaim = { face: prevClaim.claimFace, num: prevClaim.claimNumber };
             }
-            // get hand of current player
 
+            // get hand of current player
             data.playerHands[this.currentPlayer].forEach(dice => {
               this.currentHand.push({ face: dice, selected: false });
             });
@@ -66,6 +70,10 @@ angular
             moveNumber: this.moveNum,
             moveFace: this.moveNum ? this.moveFace : null
           }, (res) => {
+            this.prevClaim = {
+              num: this.claimNum,
+              face: this.claimFace
+            };
             this.updateGame();
           })
         };
