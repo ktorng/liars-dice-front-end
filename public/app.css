@@ -57,3 +57,8 @@ html, body {
 .current-hand .selected {
   color: #F57C00;
 }
+
+.md-bottom.md-center {
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+}

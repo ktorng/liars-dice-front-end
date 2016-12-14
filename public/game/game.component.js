@@ -4,8 +4,8 @@ angular
   .module('game')
   .component('game', {
     templateUrl: 'game/game.template.html',
-    controller: ['Game', 'Claim', 'Challenge', '$location',
-      function gameController(Game, Claim, Challenge, $location) {
+    controller: ['Game', 'Claim', 'Challenge', '$location', '$mdToast',
+      function gameController(Game, Claim, Challenge, $location, $mdToast) {
         this.gameId = localStorage.getItem('gameId');
         // default current turn to first player
         this.currentPlayer = 0;
@@ -95,6 +95,13 @@ angular
           }, (res) => {
             console.log(res)
             this.updateGame();
+
+            $mdToast.show(
+              $mdToast.simple()
+                .textContent(`Challenge! The claim that there are ${this.prevClaim.num} ${this.prevClaim.face}'s is ${res.result}!`)
+                .position('bottom center')
+                .hideDelay(10000)
+            );
           });
         };
 
