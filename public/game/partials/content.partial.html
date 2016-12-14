@@ -21,7 +21,15 @@
       No claim yet
     </div>
     <!-- Current player's hand -->
-    <md-subheader>Your Hand</md-subheader>
+    <md-subheader>
+      Your Hand
+      <span>
+        <md-icon md-svg-icon="help-circle-outline"></md-icon>
+        <md-tooltip md-direction="right">
+          You may select one or more dice of the same face to move to the board. The remaining will be rerolled.
+        </md-tooltip>
+      </span>
+    </md-subheader>
     <div class="current-hand" layout="row" layout-wrap>
       <div ng-repeat="die in $ctrl.currentHand track by $index">
         <md-icon
