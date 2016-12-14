@@ -9,7 +9,8 @@ angular
     function($mdThemingProvider, $mdIconProvider) {
       $mdThemingProvider
         .theme('default')
-        .primaryPalette('teal');
+        .primaryPalette('teal')
+        .accentPalette('orange');
 
       $mdIconProvider
         .defaultIconSet('images/mdi.svg');

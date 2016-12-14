@@ -7,8 +7,17 @@ html, body {
   padding: 0px;
 }
 
-md-input-container {
+.menu-form md-input-container {
   display: block;
+}
+
+.claim-form h4 {
+  margin: 5px;
+}
+
+.claim-form md-input-container {
+  min-width: 200px;
+  margin: 5px;
 }
 
 .instructions * {
@@ -23,4 +32,13 @@ md-input-container {
 .current-hand md-icon {
   width: 100%;
   height: 100%;
+}
+
+.current-hand md-icon:hover {
+  color: #EF6C00;
+  cursor: pointer;
+}
+
+.current-hand .selected {
+  color: #F57C00;
 }

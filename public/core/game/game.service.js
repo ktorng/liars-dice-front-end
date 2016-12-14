@@ -4,16 +4,16 @@ angular
   .module('core.game')
   .factory('Game', ['$resource',
     function($resource) {
-      return $resource('games/:id', {id: '@_id'});
+      return $resource('games/:id', { id: '@_id' });
     }
   ])
   .factory('Claim', ['$resource',
     function($resource) {
-      return $resource('games/:id/claim', {id: '@_id'});
+      return $resource('games/:id/claim', { id: '@_id' }, { post: 'POST' });
     }
   ])
-  .factory('Challenge', ['$resource', 
+  .factory('Challenge', ['$resource',
     function($resource) {
-      return $resource('games/:id/challenge', {id: '@_id'});
+      return $resource('games/:id/challenge', { id: '@_id' });
     }
   ]);

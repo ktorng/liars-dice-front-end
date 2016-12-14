@@ -1,14 +1,79 @@
 <section md-whiteframe="10">
 <md-toolbar class="md-accent">
-  <div class="md-toolbar-tools">
-    Current player: {{$ctrl.currentPlayer + 1}}
+  <div layout="column" class="md-toolbar-tools" layout-align="end start">
+    <h1>Current player: {{$ctrl.currentPlayer + 1}}</h1>
+    <h1>Current claim: </h1>
   </div>
 </md-toolbar>
-<md-content>
+<md-content layout="column" layout-padding>
+  <!-- Current player's hand -->
   <div class="current-hand" layout="row">
     <div flex="100 / $ctrl.currentHand.length" ng-repeat="die in $ctrl.currentHand track by $index">
-      <md-icon md-svg-icon="dice-{{die}}"></md-icon>
+      <md-icon
+        md-svg-icon="dice-{{die.face}}" 
+        ng-click="$ctrl.toggleSelect($index)"
+        ng-class="{ 'selected': die.selected }"
+      ></md-icon>
     </div>
+  </div>
+
+  <!-- Claim input form -->
+  <div layout="column" layout-align="center center">
+    <form name="claimForm" class="claim-form">
+      <h4>Make a higher claim</h4>
+      <md-input-container>
+        <label>Number of Dice</label>
+        <input
+          required
+          type="number"
+          name="claimNum"
+          ng-model="$ctrl.claimNum"
+          min="2"
+          max="8"
+          step="1"
+          ng-pattern="/^[2-8]$/"
+        />
+        <div ng-messages="menuForm.claimNum.$error">
+          <div ng-message-exp="['required', 'min', 'max', 'pattern']">
+            Please enter a valid number of dice.
+          </div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Dice Face</label>
+        <input
+          required
+          type="number"
+          name="claimFace"
+          ng-model="$ctrl.claimFace"
+          min="1"
+          max="6"
+          step="1"
+          ng-pattern="/^[1-6]$/"
+        />
+        <div ng-messages="menuForm.claimFace.$error">
+          <div ng-message-exp="['required', 'min', 'max', 'pattern']">
+            Please enter a valid dice face.
+          </div>
+        </div>
+      </md-input-container>
+    </form>
+  </div>
+
+  <div flex layout="row" layout-align="center end">
+    <md-button
+      aria-label="Claim"
+      class="md-raised md-secondary"
+      ng-click="$ctrl.makeClaim()"
+    >
+      Claim
+    </md-button>
+    <md-button
+      aria-label="Leave Game"
+      class="md-raised md-secondary"
+    >
+      Challenge
+    </md-button>
   </div>
 </md-content>
 </section>
