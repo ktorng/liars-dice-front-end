@@ -4,8 +4,8 @@ angular
   .module('game')
   .component('game', {
     templateUrl: 'game/game.template.html',
-    controller: ['Game', 'Claim', '$location',
-      function gameController(Game, Claim, $location) {
+    controller: ['Game', 'Claim', 'Challenge', '$location',
+      function gameController(Game, Claim, Challenge, $location) {
         this.gameId = localStorage.getItem('gameId');
         // default current turn to first player
         this.currentPlayer = 0;
@@ -57,11 +57,15 @@ angular
             // set this dice selected to true and increment moveNum
             this.currentHand[i].selected = true;
             this.moveNum++;
+
+            // set claimNum and claimFace to selected for ease of play
+            this.claimNum = this.moveNum;
+            this.claimFace = this.moveFace;
           }
         };
 
         // make a claim
-        this.makeClaim = () => {
+        this.postClaim = () => {
           Claim.save({
             id: this.gameId,
             claimNumber: this.claimNum,
@@ -74,10 +78,27 @@ angular
               num: this.claimNum,
               face: this.claimFace
             };
+            this.claimNum = null;
+            this.claimFace = null;
             this.updateGame();
-          })
+          });
         };
 
+        // make a challenge
+        this.postChallenge = () => {
+          console.log(this.currentPlayer)
+          Challenge.save({
+            id: this.gameId,
+            player: this.currentPlayer,
+            challengeNumber: this.prevClaim.num,
+            challengeFace: this.prevClaim.face
+          }, (res) => {
+            console.log(res)
+            this.updateGame();
+          });
+        };
+
+        // get game info on component mount
         this.updateGame();
       }
     ]

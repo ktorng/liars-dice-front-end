@@ -9,11 +9,11 @@ angular
   ])
   .factory('Claim', ['$resource',
     function($resource) {
-      return $resource('games/:id/claim', { id: '@_id' }, { post: 'POST' });
+      return $resource('games/claim');
     }
   ])
   .factory('Challenge', ['$resource',
     function($resource) {
-      return $resource('games/:id/challenge', { id: '@_id' });
+      return $resource('games/challenge');
     }
   ]);

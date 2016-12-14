@@ -43,10 +43,10 @@
             type="number"
             name="claimNum"
             ng-model="$ctrl.claimNum"
-            min="2"
-            max="8"
+            min="1"
+            max="$ctrl.game.numPlayers * $ctrl.game.numDice"
             step="1"
-            ng-pattern="/^[2-8]$/"
+            ng-pattern="/^[0-9]+$/"
           />
           <div ng-messages="menuForm.claimNum.$error">
             <div ng-message-exp="['required', 'min', 'max', 'pattern']">
@@ -79,7 +79,7 @@
       <md-button
         aria-label="Claim"
         class="md-raised md-secondary"
-        ng-click="$ctrl.makeClaim()"
+        ng-click="$ctrl.postClaim()"
       >
         Claim
       </md-button>
@@ -88,6 +88,7 @@
         aria-label="Leave Game"
         class="md-raised md-secondary"
         ng-disabled="$ctrl.game.actions.length === 0"
+        ng-click="$ctrl.postChallenge()"
       >
         Challenge
       </md-button>

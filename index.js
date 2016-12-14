@@ -56,13 +56,15 @@ app.post('/games/claim', function(req, res) {
 });
 
 /* this endpoint returns true or false based on whether the last claim exists */
-app.post('/games/:id/challenge', function(req, res) {
-  Game.find(req.params.id, function(game) {
+app.post('/games/challenge', function(req, res) {
+  Game.find(req.body.id, function(game) {
     Action.add(game, {
       actionType: "challenge",
-      player: req.body.player
+      player: req.body.player,
+      challengeNumber: req.body.challengeNumber,
+      challengeFace: req.body.challengeFace
     }, function(result) {
-      res.json(result);
+      res.json({ result });
     });
   });
 });

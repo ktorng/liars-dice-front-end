@@ -1,20 +1,25 @@
 <h3>Game ID: {{$ctrl.game._id}}</h3>
 <md-divider></md-divider>
 
-<h4>Player hands:</h4>
+<h4>Player hands (number of dice hidden):</h4>
 <div ng-repeat="hand in $ctrl.game.playerHands track by $index">
-  <div ng-if="$ctrl.currentPlayer === $index">
-    Player {{$index + 1}} hand: {{ hand }}
-  </div>
-  <div ng-if="$ctrl.currentPlayer !== $index">
-    Player {{$index + 1}} hand: hidden
+  <div>
+    Player {{$index + 1}}:
+    <span ng-repeat="die in hand track by $index">
+      <md-icon md-svg-icon="checkbox-blank"></md-icon>
+    </span>
   </div>
 </div>
 <md-divider></md-divider>
 
 <h4>Actions:</h4>
 <div ng-repeat="action in $ctrl.game.actions track by $index">
-  Player {{ action.player }} claimed there are {{ action.claimNumber }} {{ action.claimFace }}'s
+  <span ng-if="action.actionType === 'claim'">
+    Player {{ action.player + 1 }} claimed there are {{ action.claimNumber }} {{ action.claimFace }}'s
+  </span>
+  <span ng-if="action.actionType === 'challenge'">
+    Player {{ action.player + 1 }} challenges the claim that there are {{ action.challengeNumber }} {{ action.challengeFace }}'s!
+  </span>
 </div>
 <md-divider></md-divider>
 

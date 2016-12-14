@@ -14,7 +14,7 @@ Action.removeDice = function(game, num, face, player) {
   for(var i=0; i<num; i++) {
     var index = game.document.playerHands[player].indexOf(face);
     if (index > -1) {
-      game.document.playerHands[player].splice(index, 1);  
+      game.document.playerHands[player].splice(index, 1);
       game.document.board.unshift(face);
     }
   }
@@ -42,18 +42,8 @@ Action.add = function(game, action, cb) {
   }
 };
 
-Action.challenge = function(game) {
+Action.challenge = function(game, num, face) {
   var self = this;
-
-  // first get last claim
-  game.document.actions.sort(function(a, b) {
-    if (a.actionType == "challenge") return 1;
-    if (b.actionType == "challenge") return -1;
-    return a.claimNumber > b.claimNumber ? -1 : (b.claimNumber > a.claimNumber ? 1 : 0);
-  });
-  
-  var face = game.document.actions[0].claimFace;
-  var num = game.document.actions[0].claimNumber;
 
   // add up all of face in all hands and board
   var inPlayerHands = game.document.playerHands.reduce(function(accumulator, currentPlayerHand) {
