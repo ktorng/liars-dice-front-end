@@ -1,13 +1,26 @@
 <h3>Game ID: {{$ctrl.game._id}}</h3>
 <md-divider></md-divider>
 
-<h4>Player hands (number of dice hidden):</h4>
-<div ng-repeat="hand in $ctrl.game.playerHands track by $index">
-  <div>
-    Player {{$index + 1}}:
-    <span ng-repeat="die in hand track by $index">
-      <md-icon md-svg-icon="checkbox-blank"></md-icon>
-    </span>
+<div ng-if="$ctrl.endGame === false">
+  <h4>Player hands (number of dice hidden):</h4>
+  <div ng-repeat="hand in $ctrl.game.playerHands track by $index">
+    <div>
+      Player {{$index + 1}}:
+      <span ng-repeat="die in hand track by $index">
+        <md-icon md-svg-icon="checkbox-blank"></md-icon>
+      </span>
+    </div>
+  </div>
+</div>
+<div ng-if="$ctrl.endGame === true">
+  <h4>Player hands (revealed):</h4>
+  <div ng-repeat="hand in $ctrl.game.playerHands track by $index">
+    <div>
+      Player {{$index + 1}}:
+      <span ng-repeat="die in hand track by $index">
+        <md-icon md-svg-icon="dice-{{die}}"></md-icon>
+      </span>
+    </div>
   </div>
 </div>
 <md-divider></md-divider>
@@ -19,6 +32,9 @@
   </span>
   <span ng-if="action.actionType === 'challenge'">
     Player {{ action.player + 1 }} challenges the claim that there are {{ action.challengeNumber }} {{ action.challengeFace }}'s!
+  </span>
+  <span ng-if="action.actionType === 'end'">
+    Player {{ action.player }}'s claim was {{ action.result }}!
   </span>
 </div>
 <md-divider></md-divider>

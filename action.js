@@ -36,6 +36,7 @@ Action.add = function(game, action, cb) {
     }
   } else if (action.actionType == "challenge") {
     var result = this.challenge(game, action.challengeNumber, action.challengeFace);
+    game.document.actions.unshift({ actionType: 'end', player: action.player, result: result });
     game.save(function() {
       cb(result);
     });

@@ -11,6 +11,7 @@ angular
         this.currentPlayer = 0;
         this.currentHand = [];
         this.moveNum = 0;
+        this.endGame = false;
 
         this.updateGame = () => {
           Game.get({ id: this.gameId }, (data) => {
@@ -106,14 +107,15 @@ angular
             challengeNumber: this.prevClaim.num,
             challengeFace: this.prevClaim.face
           }, (res) => {
-            this.updateGame();
-
             $mdToast.show(
               $mdToast.simple()
                 .textContent(`Challenge! The claim that there are ${this.prevClaim.num} ${this.prevClaim.face}'s is ${res.result}!`)
                 .position('bottom center')
                 .hideDelay(10000)
             );
+            this.updateGame();
+            // end the game and reveal hidden hands
+            this.endGame = true;
           });
         };
 

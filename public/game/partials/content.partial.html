@@ -76,18 +76,20 @@
     </div>
 
     <div flex layout="row" layout-align="center end">
+      <!-- Disable after challenge-->
       <md-button
         aria-label="Claim"
         class="md-raised md-secondary"
         ng-click="$ctrl.postClaim()"
+        ng-disabled="$ctrl.endGame"
       >
         Claim
       </md-button>
-      <!-- Disable on turn 1 -->
+      <!-- Disable on turn 1 or after challenge-->
       <md-button
         aria-label="Leave Game"
         class="md-raised md-secondary"
-        ng-disabled="$ctrl.game.actions.length === 0"
+        ng-disabled="$ctrl.game.actions.length === 0 || $ctrl.endGame"
         ng-click="$ctrl.postChallenge()"
       >
         Challenge
